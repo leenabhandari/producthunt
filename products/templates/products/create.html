@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Product Hunt Login</title>
+  </head>
+  <body>
+    <br>
+    {% if error %}
+    {{ error }}<br><br>
+    {% endif %}
+    <h4>Add product</h4>
+    <form class="" action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      Title:<br> <input type="text" name="title" value=""><br>
+      URL:<br> <input type="text" name="url" value=""><br>
+      Body:<br> <textarea name = 'body'></textarea><br>
+      Image:<br> <input type="file" name="image" value=""><br />
+      Icon:<br> <input type="file" name="icon" value=""><br>
+      <br>
+      <input type="submit" name="" value="Add Product" class="btn btn-primary">
+    </form>
+  </body>
+</html>
+{% endblock %}

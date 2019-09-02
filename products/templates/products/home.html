@@ -7,7 +7,37 @@
     <title>Product Hunt Homepage</title>
   </head>
   <body>
-  Home!
+    HOME
+   {% for product in products.all%}
+   <br><br>
+   <div class="container card">
+     <div class="row pt-3">
+       <div class="col-2" onclick="window.location='{% url 'detail' product.id %}';" style="cursor:pointer;">
+         <img src="{{ product.icon.url }}" alt="" height="100" width="100">
+       </div>
+
+       <div class="col-6" onclick="window.location='{% url 'detail' product.id %}';" style="cursor:pointer;">
+         <h2><a href="{{product.url}}">{{ product.title}}</a></h2><br>
+         <p>{{product.summary}}</p>
+       </div>
+
+       <div class="col-4">
+
+       <a href="javascript:{document.getElementById('upvote{{product.id}}').submit()}"><button type="button" name="upvote" class="btn btn-primary btn-lg btn-block"><span class="oi oi-thumb-up"></span> UpVote {{product.votes_total}}</button></a>
+       <form class="" action="{% url 'upvote1' product.id %}" method="post" id ='upvote{{product.id}}'>
+         {% csrf_token %}
+         <input type="hidden" name="" value="">
+       </form>
+       </div>
+
+       </div>
+
+
+   </div>
+
+  {% endfor %}
+
+
   </body>
 </html>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Product Hunt Login</title>
+  </head>
+  <body>
+    <br>
+    {% if error %}
+    {{ error }}<br><br>
+    {% endif %}
+    <h4>Login</h4>
+    <form class="" action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      Username:<br> <input type="text" name="username" value=""><br>
+      Password:<br> <input type="password" name="password" value=""><br>
+      <br>
+      <input type="submit" name="" value="Login" class="btn btn-primary">
+    </form>
+  </body>
+</html>
+{% endblock %}
